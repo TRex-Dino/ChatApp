@@ -8,13 +8,26 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-
-    let myButton = UIButton(title: "Email",
+    
+    let logoImageView = UIImageView(image: #imageLiteral(resourceName: <#T##String#>), contentMode: .scaleAspectFit)
+    
+    let googleLabel = UILabel(text: "Get started with")
+    let emailLabel = UILabel(text: "Or sign up with")
+    let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
+    
+    let googleButton = UIButton(title: "Google",
                             titleColor: .black,
                             backgroundColor: .white,
-                            font: .avenir20(),
-                            isShadow: true,
-                            cornerRadius: 4)
+                            isShadow: true)
+
+    let emailButton = UIButton(title: "Email",
+                            titleColor: .white,
+                            backgroundColor: .buttonDark())
+    
+    let loginButton = UIButton(title: "Login",
+                            titleColor: .buttonRed(),
+                            backgroundColor: .white,
+                            isShadow: true)
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
