@@ -10,6 +10,7 @@
 		0A1FD78C2698A9E700ACD4BE /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FD78A2698A9E700ACD4BE /* waitingChats.json */; };
 		0A1FD78D2698A9E700ACD4BE /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FD78B2698A9E700ACD4BE /* activeChats.json */; };
 		0A1FD78F2698AA1D00ACD4BE /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FD78E2698AA1D00ACD4BE /* Bundle-Decodable.swift */; };
+		0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FD7912698B60500ACD4BE /* ActiveChatCell.swift */; };
 		0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C72697332E00DF41BF /* AppDelegate.swift */; };
 		0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C92697332E00DF41BF /* SceneDelegate.swift */; };
 		0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0CB2697332E00DF41BF /* AuthViewController.swift */; };
@@ -37,6 +38,7 @@
 		0A1FD78A2698A9E700ACD4BE /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		0A1FD78B2698A9E700ACD4BE /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		0A1FD78E2698AA1D00ACD4BE /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		0A1FD7912698B60500ACD4BE /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 		0A41F0C42697332E00DF41BF /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A41F0C72697332E00DF41BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A41F0C92697332E00DF41BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1FD7902698B5EC00ACD4BE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0A1FD7912698B60500ACD4BE /* ActiveChatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0A41F0BB2697332E00DF41BF = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		0A41F0FA26978D3900DF41BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A1FD7902698B5EC00ACD4BE /* Cell */,
 				0A41F0F726978B4F00DF41BF /* ListViewController.swift */,
 				0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */,
 				0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */,
@@ -228,6 +239,7 @@
 				0A41F0EC269767C100DF41BF /* SignUpViewController.swift in Sources */,
 				0A41F0FC26978D7C00DF41BF /* MainTabBarController.swift in Sources */,
 				0A41F0DE26973F7500DF41BF /* UIFont + Extension.swift in Sources */,
+				0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */,
 				0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */,
 				0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */,
 				0A41F0E22697473C00DF41BF /* Label + Extension.swift in Sources */,
