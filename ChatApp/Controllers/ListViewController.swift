@@ -7,21 +7,6 @@
 
 import UIKit
 
-struct MChat: Hashable, Decodable {
-    var username: String
-    var userImageString: String
-    var lastMessage: String
-    var id: Int
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: MChat, rhs: MChat) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
 class ListViewController: UIViewController {
    
     let activeChats = Bundle.main.decode([MChat].self, from: "activeChats.json")
@@ -74,7 +59,7 @@ class ListViewController: UIViewController {
                                 withReuseIdentifier: SectionHeader.reuseID)
         
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
+        collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
     }
     
     private func reloadData() {
