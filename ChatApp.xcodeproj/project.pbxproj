@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A11E6D72699C47D003F504E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6D62699C47D003F504E /* GradientView.swift */; };
 		0A1FD78C2698A9E700ACD4BE /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FD78A2698A9E700ACD4BE /* waitingChats.json */; };
 		0A1FD78D2698A9E700ACD4BE /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FD78B2698A9E700ACD4BE /* activeChats.json */; };
 		0A1FD78F2698AA1D00ACD4BE /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FD78E2698AA1D00ACD4BE /* Bundle-Decodable.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A11E6D62699C47D003F504E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0A1FD78A2698A9E700ACD4BE /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		0A1FD78B2698A9E700ACD4BE /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		0A1FD78E2698AA1D00ACD4BE /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				0A41F0ED26976A4300DF41BF /* OneLineTextField.swift */,
 				0A41F0E726974AE200DF41BF /* ButtonFormView.swift */,
 				0A41F0E5269748CA00DF41BF /* UIKit */,
+				0A11E6D62699C47D003F504E /* GradientView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -156,10 +159,10 @@
 		0A41F0FA26978D3900DF41BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0A1FD7902698B5EC00ACD4BE /* Cell */,
 				0A41F0F726978B4F00DF41BF /* ListViewController.swift */,
 				0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */,
 				0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */,
+				0A1FD7902698B5EC00ACD4BE /* Cell */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			files = (
 				0A41F0F826978B4F00DF41BF /* ListViewController.swift in Sources */,
 				0A41F0EC269767C100DF41BF /* SignUpViewController.swift in Sources */,
+				0A11E6D72699C47D003F504E /* GradientView.swift in Sources */,
 				0A41F0FC26978D7C00DF41BF /* MainTabBarController.swift in Sources */,
 				0A41F0DE26973F7500DF41BF /* UIFont + Extension.swift in Sources */,
 				0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */,
