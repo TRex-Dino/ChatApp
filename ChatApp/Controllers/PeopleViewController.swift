@@ -26,6 +26,7 @@ class PeopleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchBar()
         setupCollectionView()
         createDataSource()
         reloadData(with: nil)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A045869269A3BCA004FB32B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A045868269A3BCA004FB32B /* ProfileViewController.swift */; };
 		0A11E6D72699C47D003F504E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6D62699C47D003F504E /* GradientView.swift */; };
 		0A11E6D92699F79F003F504E /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6D82699F79F003F504E /* WaitingChatCell.swift */; };
 		0A11E6DB2699F85E003F504E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6DA2699F85E003F504E /* SelfConfiguringCell.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A045868269A3BCA004FB32B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0A11E6D62699C47D003F504E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0A11E6D82699F79F003F504E /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
 		0A11E6DA2699F85E003F504E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */,
 				0A1FD7902698B5EC00ACD4BE /* Cell */,
 				0A11E6E1269A0AED003F504E /* Header */,
+				0A045868269A3BCA004FB32B /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */,
 				0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */,
 				0A41F0E22697473C00DF41BF /* Label + Extension.swift in Sources */,
+				0A045869269A3BCA004FB32B /* ProfileViewController.swift in Sources */,
 				0A1FD78F2698AA1D00ACD4BE /* Bundle-Decodable.swift in Sources */,
 				0A41F0F22697797A00DF41BF /* SetupProfileViewController.swift in Sources */,
 				0A41F0E826974AE200DF41BF /* ButtonFormView.swift in Sources */,
