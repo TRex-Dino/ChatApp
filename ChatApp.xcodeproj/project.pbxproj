@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FD7912698B60500ACD4BE /* ActiveChatCell.swift */; };
 		0A2C444F269B52B100D5E92C /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C444E269B52B100D5E92C /* ChatRequestViewController.swift */; };
 		0A2C4451269B5DC200D5E92C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A2C4450269B5DC200D5E92C /* GoogleService-Info.plist */; };
+		0A2C4454269B6DDB00D5E92C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C4453269B6DDB00D5E92C /* AuthService.swift */; };
 		0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C72697332E00DF41BF /* AppDelegate.swift */; };
 		0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C92697332E00DF41BF /* SceneDelegate.swift */; };
 		0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0CB2697332E00DF41BF /* AuthViewController.swift */; };
@@ -68,6 +69,7 @@
 		0A1FD7912698B60500ACD4BE /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 		0A2C444E269B52B100D5E92C /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 		0A2C4450269B5DC200D5E92C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A2C4453269B6DDB00D5E92C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0A41F0C42697332E00DF41BF /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A41F0C72697332E00DF41BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A41F0C92697332E00DF41BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0A2C4452269B6DA100D5E92C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0A11E6E6269A0C41003F504E /* Models */,
+				0A2C4453269B6DDB00D5E92C /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		0A41F0BB2697332E00DF41BF = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +177,7 @@
 			children = (
 				0A41F0C72697332E00DF41BF /* AppDelegate.swift */,
 				0A41F0C92697332E00DF41BF /* SceneDelegate.swift */,
-				0A11E6E6269A0C41003F504E /* Models */,
+				0A2C4452269B6DA100D5E92C /* Services */,
 				0A41F0F926978D0A00DF41BF /* Signin&Auth */,
 				0A41F0FA26978D3900DF41BF /* Controllers */,
 				0A11E6DC2699F88C003F504E /* Protocols */,
@@ -243,7 +254,6 @@
 				50248B4036FFDCBC02A0EB6D /* Pods-ChatApp.debug.xcconfig */,
 				8B5702CC57B023B04B06BD5F /* Pods-ChatApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -403,6 +413,7 @@
 				0A41F0DC26973D5100DF41BF /* UIButton + Extension.swift in Sources */,
 				0A41F0EA269751E700DF41BF /* StackView + Extension.swift in Sources */,
 				0A41F0F02697746600DF41BF /* LoginViewController.swift in Sources */,
+				0A2C4454269B6DDB00D5E92C /* AuthService.swift in Sources */,
 				0A41F0F62697813900DF41BF /* UISegmentedControl.swift in Sources */,
 				0A41F0EE26976A4300DF41BF /* OneLineTextField.swift in Sources */,
 			);
