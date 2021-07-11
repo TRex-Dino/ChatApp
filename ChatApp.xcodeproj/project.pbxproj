@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A045869269A3BCA004FB32B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A045868269A3BCA004FB32B /* ProfileViewController.swift */; };
+		0A04586B269A3DC1004FB32B /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04586A269A3DC1004FB32B /* InsertableTextField.swift */; };
+		0A04586D269A40E9004FB32B /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04586C269A40E9004FB32B /* UIView + Extension.swift */; };
 		0A11E6D72699C47D003F504E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6D62699C47D003F504E /* GradientView.swift */; };
 		0A11E6D92699F79F003F504E /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6D82699F79F003F504E /* WaitingChatCell.swift */; };
 		0A11E6DB2699F85E003F504E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E6DA2699F85E003F504E /* SelfConfiguringCell.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		0A045868269A3BCA004FB32B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0A04586A269A3DC1004FB32B /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		0A04586C269A40E9004FB32B /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		0A11E6D62699C47D003F504E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0A11E6D82699F79F003F504E /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
 		0A11E6DA2699F85E003F504E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				0A41F0E9269751E700DF41BF /* StackView + Extension.swift */,
 				0A41F0F52697813900DF41BF /* UISegmentedControl.swift */,
 				0A11E6E9269A1654003F504E /* UIViewController + Extension.swift */,
+				0A04586C269A40E9004FB32B /* UIView + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				0A41F0E726974AE200DF41BF /* ButtonFormView.swift */,
 				0A41F0E5269748CA00DF41BF /* UIKit */,
 				0A11E6D62699C47D003F504E /* GradientView.swift */,
+				0A04586A269A3DC1004FB32B /* InsertableTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,9 +217,9 @@
 				0A41F0F726978B4F00DF41BF /* ListViewController.swift */,
 				0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */,
 				0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */,
+				0A045868269A3BCA004FB32B /* ProfileViewController.swift */,
 				0A1FD7902698B5EC00ACD4BE /* Cell */,
 				0A11E6E1269A0AED003F504E /* Header */,
-				0A045868269A3BCA004FB32B /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				0A11E6E3269A0BB1003F504E /* MUser.swift in Sources */,
 				0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */,
 				0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */,
+				0A04586B269A3DC1004FB32B /* InsertableTextField.swift in Sources */,
 				0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */,
 				0A41F0E22697473C00DF41BF /* Label + Extension.swift in Sources */,
 				0A045869269A3BCA004FB32B /* ProfileViewController.swift in Sources */,
@@ -309,6 +316,7 @@
 				0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */,
 				0A41F0F426977AEF00DF41BF /* AddPhotoView.swift in Sources */,
 				0A41F0E42697480900DF41BF /* UIImageView + Extension.swift in Sources */,
+				0A04586D269A40E9004FB32B /* UIView + Extension.swift in Sources */,
 				0A41F0E0269744BD00DF41BF /* UIColor + extension.swift in Sources */,
 				0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */,
 				0A11E6E8269A146D003F504E /* UserCell.swift in Sources */,
