@@ -28,6 +28,8 @@
 		0A2C4454269B6DDB00D5E92C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C4453269B6DDB00D5E92C /* AuthService.swift */; };
 		0A2C4456269B779900D5E92C /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C4455269B779900D5E92C /* Validators.swift */; };
 		0A2C4458269B790300D5E92C /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C4457269B790300D5E92C /* AuthError.swift */; };
+		0A2C445B269B864D00D5E92C /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C445A269B864D00D5E92C /* AuthNavigationDelegate.swift */; };
+		0A2C445D269B888000D5E92C /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C445C269B888000D5E92C /* FirestoreService.swift */; };
 		0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C72697332E00DF41BF /* AppDelegate.swift */; };
 		0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0C92697332E00DF41BF /* SceneDelegate.swift */; };
 		0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0CB2697332E00DF41BF /* AuthViewController.swift */; };
@@ -49,6 +51,7 @@
 		0A41F0F826978B4F00DF41BF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0F726978B4F00DF41BF /* ListViewController.swift */; };
 		0A41F0FC26978D7C00DF41BF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */; };
 		0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */; };
+		0AFC6EB9269C3B5E00561603 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EB8269C3B5E00561603 /* UserError.swift */; };
 		486D8276D2979503088D99A9 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,8 @@
 		0A2C4453269B6DDB00D5E92C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0A2C4455269B779900D5E92C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		0A2C4457269B790300D5E92C /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		0A2C445A269B864D00D5E92C /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
+		0A2C445C269B888000D5E92C /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		0A41F0C42697332E00DF41BF /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A41F0C72697332E00DF41BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A41F0C92697332E00DF41BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 		0A41F0F726978B4F00DF41BF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		0AFC6EB8269C3B5E00561603 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		50248B4036FFDCBC02A0EB6D /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8B5702CC57B023B04B06BD5F /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				0A11E6DA2699F85E003F504E /* SelfConfiguringCell.swift */,
+				0A2C445A269B864D00D5E92C /* AuthNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 			children = (
 				0A11E6E6269A0C41003F504E /* Models */,
 				0A2C4453269B6DDB00D5E92C /* AuthService.swift */,
+				0A2C445C269B888000D5E92C /* FirestoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 			children = (
 				0A2C4457269B790300D5E92C /* AuthError.swift */,
 				0A2C4455269B779900D5E92C /* Validators.swift */,
+				0AFC6EB8269C3B5E00561603 /* UserError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -408,6 +417,7 @@
 				0A2C4456269B779900D5E92C /* Validators.swift in Sources */,
 				0A1FD7922698B60500ACD4BE /* ActiveChatCell.swift in Sources */,
 				0A41F0CC2697332E00DF41BF /* AuthViewController.swift in Sources */,
+				0A2C445B269B864D00D5E92C /* AuthNavigationDelegate.swift in Sources */,
 				0A04586B269A3DC1004FB32B /* InsertableTextField.swift in Sources */,
 				0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */,
 				0A41F0E22697473C00DF41BF /* Label + Extension.swift in Sources */,
@@ -418,8 +428,10 @@
 				0A41F0E826974AE200DF41BF /* ButtonFormView.swift in Sources */,
 				0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */,
 				0A41F0F426977AEF00DF41BF /* AddPhotoView.swift in Sources */,
+				0AFC6EB9269C3B5E00561603 /* UserError.swift in Sources */,
 				0A41F0E42697480900DF41BF /* UIImageView + Extension.swift in Sources */,
 				0A04586D269A40E9004FB32B /* UIView + Extension.swift in Sources */,
+				0A2C445D269B888000D5E92C /* FirestoreService.swift in Sources */,
 				0A41F0E0269744BD00DF41BF /* UIColor + extension.swift in Sources */,
 				0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */,
 				0A11E6E8269A146D003F504E /* UserCell.swift in Sources */,
