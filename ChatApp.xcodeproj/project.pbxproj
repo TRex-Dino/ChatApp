@@ -52,6 +52,7 @@
 		0A41F0FC26978D7C00DF41BF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */; };
 		0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */; };
 		0AFC6EB9269C3B5E00561603 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EB8269C3B5E00561603 /* UserError.swift */; };
+		0AFC6EBB269C6C2800561603 /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */; };
 		486D8276D2979503088D99A9 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		0A41F0FB26978D7C00DF41BF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		0AFC6EB8269C3B5E00561603 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
 		50248B4036FFDCBC02A0EB6D /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8B5702CC57B023B04B06BD5F /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				0A41F0F52697813900DF41BF /* UISegmentedControl.swift */,
 				0A11E6E9269A1654003F504E /* UIViewController + Extension.swift */,
 				0A04586C269A40E9004FB32B /* UIView + Extension.swift */,
+				0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				0A41F0C12697332E00DF41BF /* Frameworks */,
 				0A41F0C22697332E00DF41BF /* Resources */,
 				7EF701D121B3815D80E2D219 /* [CP] Embed Pods Frameworks */,
+				602C0EF23DD26C4CB50EA344 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,6 +363,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		602C0EF23DD26C4CB50EA344 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C5FDEE9EBB5EBFB63B3E969 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,6 +429,7 @@
 				0A11E6E5269A0BC1003F504E /* MChat.swift in Sources */,
 				0A41F0F826978B4F00DF41BF /* ListViewController.swift in Sources */,
 				0A41F0EC269767C100DF41BF /* SignUpViewController.swift in Sources */,
+				0AFC6EBB269C6C2800561603 /* UIAplication + Extension.swift in Sources */,
 				0A11E6DE2699F9E5003F504E /* SectionHeader.swift in Sources */,
 				0A11E6D72699C47D003F504E /* GradientView.swift in Sources */,
 				0A41F0FC26978D7C00DF41BF /* MainTabBarController.swift in Sources */,

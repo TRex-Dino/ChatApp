@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 
 
 class LoginViewController: UIViewController {
@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
     
     @objc private func loginButtonTapped() {
@@ -50,7 +51,16 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let user):
                 self.showAlert(with: "Success", and: "You ok") {
-                    self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                    FirestoreService.shared.getUserData(user: user) { result in
+                        switch result {
+                        case .success(let muser):
+                            let mainTabBar = MainTabBarController(currentUser: muser)
+                            mainTabBar.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBar, animated: true, completion: nil)
+                        case .failure(_):
+                            self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                        }
+                    }
                 }
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
@@ -62,6 +72,11 @@ class LoginViewController: UIViewController {
         dismiss(animated: true) {
             self.delegate?.toSignUpVC()
         }
+    }
+    
+    @objc private func googleButtonTapped() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
     }
 }
 

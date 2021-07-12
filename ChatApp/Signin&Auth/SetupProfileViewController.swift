@@ -28,6 +28,10 @@ class SetupProfileViewController: UIViewController {
     init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
+        
+        if let username = currentUser.displayName {
+            fullNameTextField.text = username
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +56,11 @@ class SetupProfileViewController: UIViewController {
             sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
             switch result {
             case .success(let muser):
-                self.showAlert(with: "Success", and: "Have a nice chat")
+                self.showAlert(with: "Success", and: "Have a nice chat") {
+                    let mainTabBar = MainTabBarController(currentUser: muser)
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBar, animated: true, completion: nil)
+                }
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
