@@ -53,6 +53,9 @@
 		0A41F0FE26978DCE00DF41BF /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */; };
 		0AFC6EB9269C3B5E00561603 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EB8269C3B5E00561603 /* UserError.swift */; };
 		0AFC6EBB269C6C2800561603 /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */; };
+		0AFC6EBD269C6F1F00561603 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EBC269C6F1F00561603 /* StorageService.swift */; };
+		0AFC6EBF269C84B100561603 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EBE269C84B100561603 /* UIImage + Extension.swift */; };
+		0AFC6EC1269CB4C800561603 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC6EC0269CB4C800561603 /* ListenerService.swift */; };
 		486D8276D2979503088D99A9 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,9 @@
 		0A41F0FD26978DCE00DF41BF /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		0AFC6EB8269C3B5E00561603 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
+		0AFC6EBC269C6F1F00561603 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		0AFC6EBE269C84B100561603 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		0AFC6EC0269CB4C800561603 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		50248B4036FFDCBC02A0EB6D /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8B5702CC57B023B04B06BD5F /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		DDC54EA50EDB333519129F3C /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +170,8 @@
 				0A11E6E6269A0C41003F504E /* Models */,
 				0A2C4453269B6DDB00D5E92C /* AuthService.swift */,
 				0A2C445C269B888000D5E92C /* FirestoreService.swift */,
+				0AFC6EBC269C6F1F00561603 /* StorageService.swift */,
+				0AFC6EC0269CB4C800561603 /* ListenerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				0A11E6E9269A1654003F504E /* UIViewController + Extension.swift */,
 				0A04586C269A40E9004FB32B /* UIView + Extension.swift */,
 				0AFC6EBA269C6C2800561603 /* UIAplication + Extension.swift */,
+				0AFC6EBE269C84B100561603 /* UIImage + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -447,6 +456,7 @@
 				0A1FD78F2698AA1D00ACD4BE /* Bundle-Decodable.swift in Sources */,
 				0A2C444F269B52B100D5E92C /* ChatRequestViewController.swift in Sources */,
 				0A41F0F22697797A00DF41BF /* SetupProfileViewController.swift in Sources */,
+				0AFC6EC1269CB4C800561603 /* ListenerService.swift in Sources */,
 				0A41F0E826974AE200DF41BF /* ButtonFormView.swift in Sources */,
 				0A41F0C82697332E00DF41BF /* AppDelegate.swift in Sources */,
 				0A41F0F426977AEF00DF41BF /* AddPhotoView.swift in Sources */,
@@ -454,12 +464,14 @@
 				0A41F0E42697480900DF41BF /* UIImageView + Extension.swift in Sources */,
 				0A04586D269A40E9004FB32B /* UIView + Extension.swift in Sources */,
 				0A2C445D269B888000D5E92C /* FirestoreService.swift in Sources */,
+				0AFC6EBD269C6F1F00561603 /* StorageService.swift in Sources */,
 				0A41F0E0269744BD00DF41BF /* UIColor + extension.swift in Sources */,
 				0A41F0CA2697332E00DF41BF /* SceneDelegate.swift in Sources */,
 				0A11E6E8269A146D003F504E /* UserCell.swift in Sources */,
 				0A11E6EA269A1654003F504E /* UIViewController + Extension.swift in Sources */,
 				0A11E6DB2699F85E003F504E /* SelfConfiguringCell.swift in Sources */,
 				0A11E6D92699F79F003F504E /* WaitingChatCell.swift in Sources */,
+				0AFC6EBF269C84B100561603 /* UIImage + Extension.swift in Sources */,
 				0A41F0DC26973D5100DF41BF /* UIButton + Extension.swift in Sources */,
 				0A41F0EA269751E700DF41BF /* StackView + Extension.swift in Sources */,
 				0A41F0F02697746600DF41BF /* LoginViewController.swift in Sources */,
