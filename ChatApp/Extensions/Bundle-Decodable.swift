@@ -6,6 +6,7 @@
 //  Copyright © 2020 Алексей Пархоменко. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 extension Bundle {

@@ -9,7 +9,7 @@ import UIKit
 
 class SectionHeader: UICollectionReusableView {
     
-    static let reuseID = "SectionHeader"
+    static let reuseId = "SectionHeader"
     
     let title = UILabel()
     
@@ -28,9 +28,9 @@ class SectionHeader: UICollectionReusableView {
     }
     
     func configure(text: String, font: UIFont?, textColor: UIColor) {
-        title.text = text
-        title.font = font
         title.textColor = textColor
+        title.font = font
+        title.text = text
     }
     
     required init?(coder: NSCoder) {

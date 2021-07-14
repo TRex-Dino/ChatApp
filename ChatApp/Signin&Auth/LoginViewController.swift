@@ -8,7 +8,6 @@
 import UIKit
 import GoogleSignIn
 
-
 class LoginViewController: UIViewController {
     
     let welcomeLabel = UILabel(text: "Welcome back!", font: .avenir26())
@@ -36,8 +35,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        googleButton.customizeGoogleButton()
         view.backgroundColor = .white
+        googleButton.customizeGoogleButton()
         setupConstraints()
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -45,26 +44,38 @@ class LoginViewController: UIViewController {
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
     
+    
+}
+
+// MARK: - Actions
+extension LoginViewController {
+    
+    @objc private func googleButtonTapped() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     @objc private func loginButtonTapped() {
-        AuthService.shared.login(email: emailTextField.text,
-                                 password: passwordTextField.text) { result in
-            switch result {
-            case .success(let user):
-                self.showAlert(with: "Success", and: "You ok") {
-                    FirestoreService.shared.getUserData(user: user) { result in
-                        switch result {
-                        case .success(let muser):
-                            let mainTabBar = MainTabBarController(currentUser: muser)
-                            mainTabBar.modalPresentationStyle = .fullScreen
-                            self.present(mainTabBar, animated: true, completion: nil)
-                        case .failure(_):
-                            self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+        AuthService.shared.login(
+            email: emailTextField.text!,
+            password: passwordTextField.text!) { (result) in
+                switch result {
+                case .success(let user):
+                    self.showAlert(with: "Успешно!", and: "Вы авторизованы!") {
+                        FirestoreService.shared.getUserData(user: user) { (result) in
+                            switch result {
+                            case .success(let muser):
+                                let mainTabBar = MainTabBarController(currentUser: muser)
+                                mainTabBar.modalPresentationStyle = .fullScreen
+                                self.present(mainTabBar, animated: true, completion: nil)
+                            case .failure(_):
+                                self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                            }
                         }
                     }
+                case .failure(let error):
+                    self.showAlert(with: "Ошибка!", and: error.localizedDescription)
                 }
-            case .failure(let error):
-                self.showAlert(with: "Error", and: error.localizedDescription)
-            }
         }
     }
     
@@ -72,11 +83,6 @@ class LoginViewController: UIViewController {
         dismiss(animated: true) {
             self.delegate?.toSignUpVC()
         }
-    }
-    
-    @objc private func googleButtonTapped() {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
     }
 }
 
@@ -117,7 +123,7 @@ extension LoginViewController {
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
@@ -128,7 +134,7 @@ extension LoginViewController {
         ])
         
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 60),
+            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

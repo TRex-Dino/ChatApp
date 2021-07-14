@@ -6,19 +6,19 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+
 class PeopleViewController: UIViewController {
     
-//    let users = Bundle.main.decode([MUser].self, from: "users.json")
     var users = [MUser]()
-    private var userListener: ListenerRegistration?
+    private var usersListener: ListenerRegistration?
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, MUser>!
     
     enum Section: Int, CaseIterable {
         case users
-        
         func description(usersCount: Int) -> String {
             switch self {
             case .users:
@@ -36,7 +36,7 @@ class PeopleViewController: UIViewController {
     }
     
     deinit {
-        userListener?.remove()
+        usersListener?.remove()
     }
     
     required init?(coder: NSCoder) {
@@ -45,33 +45,22 @@ class PeopleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupSearchBar()
         setupCollectionView()
         createDataSource()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
-        userListener = ListenerService.shared.usersObserve(users: users, completion: { result in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(signOut))
+        
+        usersListener = ListenerService.shared.usersObserve(users: users, completion: { (result) in
             switch result {
             case .success(let users):
                 self.users = users
                 self.reloadData(with: nil)
             case .failure(let error):
-                self.showAlert(with: "Error", and: error.localizedDescription)
+                self.showAlert(with: "Ошибка!", and: error.localizedDescription)
             }
         })
-    }
-    @objc private func signOut() {
-        let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (_) in
-            do {
-                try Auth.auth().signOut()
-                UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
-            } catch {
-                print("Error signing out: \(error.localizedDescription)")
-            }
-        }))
-        present(ac, animated: true, completion: nil)
     }
     
     private func setupCollectionView() {
@@ -80,11 +69,11 @@ class PeopleViewController: UIViewController {
         collectionView.backgroundColor = .mainWhite()
         view.addSubview(collectionView)
         
-        collectionView.register(SectionHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: SectionHeader.reuseID)
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
+        
+        collectionView.delegate = self
     }
     
     private func setupSearchBar() {
@@ -99,23 +88,43 @@ class PeopleViewController: UIViewController {
     }
     
     private func reloadData(with searchText: String?) {
-        let filtered = users.filter { user in
+        let filtered = users.filter { (user) -> Bool in
             user.contains(filter: searchText)
         }
+        
         var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
         snapshot.appendSections([.users])
-        
         snapshot.appendItems(filtered, toSection: .users)
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
-//MARK: - Data source
+// MARK: - Actions
+extension PeopleViewController {
+    @objc private func signOut() {
+        let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (_) in
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
+            } catch {
+                print("Error signing out: \(error.localizedDescription)")
+            }
+        }))
+        present(ac, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Data Source
 extension PeopleViewController {
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { collectionView, indexPath, user in
-            guard let section = Section(rawValue: indexPath.section) else { fatalError() }
+        dataSource = UICollectionViewDiffableDataSource<Section, MUser>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown section kind")
+            }
+            
             switch section {
             case .users:
                 return self.configure(collectionView: collectionView, cellType: UserCell.self, with: user, for: indexPath)
@@ -124,12 +133,8 @@ extension PeopleViewController {
         
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseID, for: indexPath) as? SectionHeader else {
-                fatalError("Can not create new section header")
-            }
-            guard let section = Section(rawValue: indexPath.section) else {
-                fatalError("Unknown section kind")
-            }
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             let items = self.dataSource.snapshot().itemIdentifiers(inSection: .users)
             sectionHeader.configure(text: section.description(usersCount: items.count),
                                     font: .systemFont(ofSize: 36, weight: .light),
@@ -137,14 +142,17 @@ extension PeopleViewController {
             return sectionHeader
         }
     }
-    
 }
 
-//MARK: - Setup layouts
+// MARK: - Setup layout
 extension PeopleViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            guard let section = Section(rawValue: sectionIndex) else { fatalError() }
+        let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            guard let section = Section(rawValue: senctionIndex) else {
+                fatalError("Unknown section kind")
+            }
+            
             switch section {
             case .users:
                 return self.createUsersSection()
@@ -187,9 +195,18 @@ extension PeopleViewController {
     }
 }
 
-//MARK: - UISearchBarDelegate
+// MARK: - UISearchBarDelegate
 extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PeopleViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataSource.itemIdentifier(for: indexPath) else { return }
+        let profileVC = ProfileViewController(user: user)
+        present(profileVC, animated: true, completion: nil)
     }
 }

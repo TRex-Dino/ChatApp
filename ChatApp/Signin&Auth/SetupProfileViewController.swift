@@ -26,6 +26,7 @@ class SetupProfileViewController: UIViewController {
     let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .buttonDark(), cornerRadius: 4)
     
     private let currentUser: User
+    
     init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
@@ -50,12 +51,15 @@ class SetupProfileViewController: UIViewController {
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
         fullImageView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
-    
+}
+
+// MARK: - Actions
+extension SetupProfileViewController {
     @objc private func plusButtonTapped() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true)
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     @objc private func goToChatsButtonTapped() {
@@ -65,17 +69,17 @@ class SetupProfileViewController: UIViewController {
             username: fullNameTextField.text,
             avatarImage: fullImageView.circleImageView.image,
             description: aboutMeTextField.text,
-            sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
-            switch result {
-            case .success(let muser):
-                self.showAlert(with: "Success", and: "Have a nice chat") {
-                    let mainTabBar = MainTabBarController(currentUser: muser)
-                    mainTabBar.modalPresentationStyle = .fullScreen
-                    self.present(mainTabBar, animated: true, completion: nil)
+            sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
+                switch result {
+                case .success(let muser):
+                    self.showAlert(with: "Успешно!", and: "Данные сохранены!", completion: {
+                        let mainTabBar = MainTabBarController(currentUser: muser)
+                        mainTabBar.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBar, animated: true, completion: nil)
+                    })
+                case .failure(let error):
+                    self.showAlert(with: "Ошибка!", and: error.localizedDescription)
                 }
-            case .failure(let error):
-                self.showAlert(with: "Error", and: error.localizedDescription)
-            }
         }
     }
 }
@@ -87,11 +91,11 @@ extension SetupProfileViewController {
                                             axis: .vertical,
                                             spacing: 0)
         let aboutMeStackView = UIStackView(arrangedSubviews: [aboutmeLabel, aboutMeTextField],
-                                           axis: .vertical,
-                                           spacing: 0)
+        axis: .vertical,
+        spacing: 0)
         let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl],
-                                       axis: .vertical,
-                                       spacing: 12)
+        axis: .vertical,
+        spacing: 12)
         
         goToChatsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         let stackView = UIStackView(arrangedSubviews: [
@@ -99,7 +103,7 @@ extension SetupProfileViewController {
             aboutMeStackView,
             sexStackView,
             goToChatsButton
-        ], axis: .vertical, spacing: 40)
+            ], axis: .vertical, spacing: 40)
         
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         fullImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -127,13 +131,12 @@ extension SetupProfileViewController {
     }
 }
 
-//MARK: - UIImagePickerControllerDelegate
+// MARK: - UIImagePickerControllerDelegate
 extension SetupProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            return
-        }
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         fullImageView.circleImageView.image = image
     }
 }

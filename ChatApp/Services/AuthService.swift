@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 
 class AuthService {
@@ -21,7 +22,7 @@ class AuthService {
             return
         }
         
-        auth.signIn(withEmail: email, password: password) { result, error in
+        auth.signIn(withEmail: email, password: password) { (result, error) in
             guard let result = result else {
                 completion(.failure(error!))
                 return
@@ -64,7 +65,7 @@ class AuthService {
             return
         }
         
-        auth.createUser(withEmail: email!, password: password!) { result, error in
+        auth.createUser(withEmail: email!, password: password!) { (result, error) in
             guard let result = result else {
                 completion(.failure(error!))
                 return

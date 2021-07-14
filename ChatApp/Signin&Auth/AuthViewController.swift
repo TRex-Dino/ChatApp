@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GoogleSignIn
+import  GoogleSignIn
 
 class AuthViewController: UIViewController {
     
@@ -14,25 +14,15 @@ class AuthViewController: UIViewController {
     
     let googleLabel = UILabel(text: "Get started with")
     let emailLabel = UILabel(text: "Or sign up with")
-    let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
+    let alreadyOnboardLabel = UILabel(text: "Alerady onboard?")
     
-    let googleButton = UIButton(title: "Google",
-                            titleColor: .black,
-                            backgroundColor: .white,
-                            isShadow: true)
-
-    let emailButton = UIButton(title: "Email",
-                            titleColor: .white,
-                            backgroundColor: .buttonDark())
-    
-    let loginButton = UIButton(title: "Login",
-                            titleColor: .buttonRed(),
-                            backgroundColor: .white,
-                            isShadow: true)
+    let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
+    let emailButton = UIButton(title: "Email", titleColor: .white, backgroundColor: .buttonDark())
+    let loginButton = UIButton(title: "Login", titleColor: .buttonRed(), backgroundColor: .white, isShadow: true)
     
     let signUpVC = SignUpViewController()
     let loginVC = LoginViewController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,78 +37,86 @@ class AuthViewController: UIViewController {
         signUpVC.delegate = self
         loginVC.delegate = self
         
-        GIDSignIn.sharedInstance().delegate = self
-    }
-    
-    @objc private func emailButtonTapped() {
-        present(signUpVC, animated: true, completion: nil)
-    }
-    
-    @objc private func loginButtonTapped() {
-        present(loginVC, animated: true, completion: nil)
-    }
-    
-    @objc private func googleButtonTapped() {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 }
 
-//MARK: - Setup Constraints
+// MARK: - Actions
+extension AuthViewController {
+    @objc private func emailButtonTapped() {
+           present(signUpVC, animated: true, completion: nil)
+       }
+       
+       @objc private func loginButtonTapped() {
+           present(loginVC, animated: true, completion: nil)
+       }
+       
+       @objc private func googleButtonTapped() {
+           GIDSignIn.sharedInstance()?.presentingViewController = self
+           GIDSignIn.sharedInstance().signIn()
+       }
+}
+
+// MARK: - Setup constraints
 extension AuthViewController {
     private func setupConstraints() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
-        let loginView = ButtonFormView(label: alreadyOnBoardLabel, button: loginButton)
-        
+        let loginView = ButtonFormView(label: alreadyOnboardLabel, button: loginButton)
+    
         let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], axis: .vertical, spacing: 40)
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(logoImageView)
         view.addSubview(stackView)
         
-        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 160).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
         
-        stackView.topAnchor.constraint(equalTo: logoImageView.topAnchor, constant: 160).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 160),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
     }
 }
 
+// MARK: - AuthNavigatingDelegate
 extension AuthViewController: AuthNavigatingDelegate {
     func toLoginVC() {
-        present(loginVC, animated: true)
+        present(loginVC, animated: true, completion: nil)
     }
     
     func toSignUpVC() {
-        present(signUpVC, animated: true)
+        present(signUpVC, animated: true, completion: nil)
     }
 }
 
-//MARK: - GIDSignInDelegate
+// MARK: - GIDSignInDelegate
 extension AuthViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        AuthService.shared.googleLogin(user: user, error: error) { result in
+        AuthService.shared.googleLogin(user: user, error: error) { (result) in
             switch result {
             case .success(let user):
-                FirestoreService.shared.getUserData(user: user) { result in
+                FirestoreService.shared.getUserData(user: user) { (result) in
                     switch result {
                     case .success(let muser):
-                        UIApplication.getTopViewController()?.showAlert(with: "Success", and: "You're log in") {
+                        UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Вы авторизованы") {
                             let mainTabBar = MainTabBarController(currentUser: muser)
                             mainTabBar.modalPresentationStyle = .fullScreen
-                            UIApplication.getTopViewController()?.present(mainTabBar, animated: true)
+                            UIApplication.getTopViewController()?.present(mainTabBar, animated: true, completion: nil)
                         }
                     case .failure(_):
-                        UIApplication.getTopViewController()?.showAlert(with: "Success", and: "You're log in") {
-                            UIApplication.getTopViewController()?.present(SetupProfileViewController(currentUser: user), animated: true)
+                        UIApplication.getTopViewController()?.showAlert(with: "Успешно", and: "Вы зарегистрированны") {
+                            UIApplication.getTopViewController()?.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                         }
-                    }
+                    } // result
                 }
             case .failure(let error):
-                self.showAlert(with: "Error", and: error.localizedDescription)
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
         }
     }
